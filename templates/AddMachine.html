@@ -1,0 +1,15 @@
+<html>
+<title> Add Machines </title>
+<b> Add Machine </b>
+<form action="/addedMachine">
+Name:
+<input type="text" placeholder="Example_Machine" name="machine_name">
+<input type="submit" value="add">
+</form>
+</html>
+
+{% if ID %}
+	<b> Machine Added </b>
+	<br>
+	Query ID: {{ ID }}
+{% endif %}

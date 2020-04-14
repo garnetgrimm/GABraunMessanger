@@ -1,0 +1,17 @@
+the run test machine is, made to emulate a machine running
+
+if you make any changes to a database class such as add a feild you need to clear database (cleardb.py)
+
+the resetDefualts script clears the database and creates two test machines
+
+to run the server on MAC/LINUX "export FLASK_APP=server.py" then "flask run", on windows just change "export" to "set"
+
+to run the server PUBLICLY on your network run "flask run --host=0.0.0.0" instead of "flask run"
+
+in the server.py I have it rendering index-complex.html with graphs, however the code for index-simple is much easier to read
+
+to change the virtual python installation (install pips or anything) cd to venv/Scripts and run activate and any change you make will be done to the virtual machine
+
+if you want there is a variable in the template drawing the graph to change how many values are being displayed
+
+flask can only do one thing at a time unless ran with the mutlithreaded property enabled

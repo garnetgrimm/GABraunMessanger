@@ -1,0 +1,2 @@
+flask looks for html files in the "templates" folder, 
+anything refranced by the html files is put in the static folder

@@ -1,0 +1,64 @@
+<html>
+
+<link href="graphs.css" rel="stylesheet" type="text/css">
+<script type=text/javascript src="{{ url_for('static', filename='jquery.js') }}"></script>
+<script language="javascript" type="text/javascript" src="{{ url_for('static', filename='jquery.flot.js') }}"></script>
+
+<script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+
+<div id="data"> </div>
+
+<div class="demo-container">
+	<div id="placeholder" class="demo-placeholder"></div>
+</div>
+
+<script>
+	var machines = {{ machine_ids }};
+	
+	console.log(machines.length);
+	
+	var machine_names = '{{ machine_names }}';
+	machine_names = machine_names.replace(/&#39;/g, "");
+	machine_names = machine_names.replace("[", "");
+	machine_names = machine_names.replace("]", "");
+	machine_names = machine_names.split(",");
+
+	for(var i = 0; i < machines.length; i++) {
+		jQuery('<h3>', {
+			id: "h_" + (i + 1),
+			text: 'Null'
+		}).appendTo('#data');
+		
+		jQuery('<p>', {
+			id: "stats_" + (i + 1),
+			text: 'Null, Null, Null, Null'
+		}).appendTo('#data');
+	}
+
+	function updateInfo() {
+		for(var i = 0; i < machines.length; i++) {
+			getInfo(machines[i]);
+		}
+	}
+	
+	function getInfo(machine_num) {
+	  this.machine_num = machine_num;	
+	  $.getJSON($SCRIPT_ROOT + '/getMachineStats', {
+		id: machine_num
+	  }, function(data) {
+		$("#h_" + machine_num).text(machine_names[machine_num - 1]);
+		$("#stats_" + machine_num).text(
+			"Tempature: " + data.tempature + " " +
+			"Water Level: " + data.water_level + " " + 
+			"Step Number: " + data.step_number
+		);
+	  });
+	}
+	
+	updateInfo()
+	setInterval(updateInfo, 1000);
+</script>
+
+</html>

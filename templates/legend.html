@@ -1,0 +1,35 @@
+<html>
+
+<style>
+
+#legend {
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	z-index: 1;
+}
+
+</style> 
+
+<canvas id="legend" width="130" height="80" style="border: 1px solid black;">
+</canvas>
+
+<script>
+	var c = document.getElementById("legend");
+	var ctx = c.getContext("2d");
+	ctx.fillStyle = "#FFFFFF";
+	ctx.fillRect(0,0,c.width,c.height);
+	ctx.fillStyle = "#EDC240";
+	ctx.fillRect(10,15,10,10);
+	ctx.fillStyle = "#AFD8F8";
+	ctx.fillRect(10,35,10,10);
+	ctx.fillStyle = "#CF5A5A";
+	ctx.fillRect(10,55,10,10);
+	ctx.fillStyle = "#000000";
+	ctx.font = "15px Georgia";
+	ctx.fillText("Tempature", 30, 25);
+	ctx.fillText("Water Level", 30, 45);
+	ctx.fillText("Step Number", 30, 65);
+</script>
+
+</html>

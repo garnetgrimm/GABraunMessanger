@@ -1,0 +1,2 @@
+anything that would normally be refranced in the same folder as the html document such as
+<script src="foo.js"> or <img src="foo.png"> is put in this folder
